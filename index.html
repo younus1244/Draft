@@ -3,85 +3,203 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CV Generator</title>
+  <title>My CV</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
     }
 
-    label {
+    .container {
+      width: 80%;
+      margin: auto;
+      overflow: hidden;
+    }
+
+    header {
+      background: #5D9CEC;
+      color: white;
+      padding-top: 30px;
+      min-height: 70px;
+      border-bottom: #e8491d 4px solid;
+    }
+
+    header a {
+      color: #ffffff;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 16px;
+    }
+
+    header ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      overflow: hidden;
+    }
+
+    header li {
+      float: left;
+      display: inline;
+      padding: 0 20px 0 20px;
+    }
+
+    header #branding {
+      float: left;
+    }
+
+    header #branding h1 {
+      margin: 0;
+    }
+
+    header .highlight, header .current a {
+      color: #e8491d;
       font-weight: bold;
     }
 
-    input, textarea {
-      width: 100%;
-      margin-bottom: 10px;
-      padding: 8px;
-      box-sizing: border-box;
+    header a:hover {
+      color: #ffffff;
+      font-weight: bold;
     }
 
-    button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+    header #branding img {
+      width: 150px;
+      height: 150px;
+      margin-top: 10px;
+    }
+
+    header #branding h1 span {
+      color: #5383d3;
+    }
+
+    header a:focus {
+      outline: 0;
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    header #branding h1 {
+      float: left;
+      color: #ffffff;
+      font-size: 20px;
+      padding-top: 10px;
+    }
+
+    header #branding h1 span {
+      color: #e8491d;
+    }
+
+    main {
+      padding: 40px 0;
+    }
+
+    section {
+      float: left;
+      width: 70%;
+    }
+
+    article {
+      display: block;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    article img {
+      width: 100%;
+      height: auto;
+    }
+
+    article h2 {
+      color: #e8491d;
+    }
+
+    article p {
+      line-height: 1.6em;
+      color: #666;
+    }
+
+    aside {
+      float: left;
+      width: 25%;
+      padding-top: 40px;
+    }
+
+    aside img {
+      width: 100%;
+      height: auto;
+      border: #e8491d 4px solid;
+    }
+
+    aside h2 {
+      color: #e8491d;
+    }
+
+    aside p {
+      color: #666;
+    }
+
+    footer {
+      padding: 20px 0;
+      background: #333;
+      color: #fff;
+      text-align: center;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
 
-  <h1>CV Generator</h1>
+  <header>
+    <div class="container">
+      <div id="branding">
+        <h1><span class="highlight">Your Name</span> CV</h1>
+      </div>
+      <nav>
+        <ul>
+          <li class="current"><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Experience</a></li>
+          <li><a href="#">Education</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-  <label for="name">Name:</label>
-  <input type="text" id="name" required>
+  <div class="container">
+    <main>
+      <section>
+        <article>
+          <h2>About Me</h2>
+          <p>Your bio or summary goes here. Provide a brief overview of your skills, experience, and career goals.</p>
+        </article>
 
-  <label for="email">Email:</label>
-  <input type="email" id="email" required>
+        <article>
+          <h2>Experience</h2>
+          <p>Your work experience details go here. List your roles, responsibilities, and achievements in each position.</p>
+        </article>
 
-  <label for="bio">Bio:</label>
-  <textarea id="bio" rows="4" required></textarea>
+        <article>
+          <h2>Education</h2>
+          <p>Your educational background goes here. Include details about your degrees, institutions, and graduation years.</p>
+        </article>
+      </section>
 
-  <label for="experience">Experience:</label>
-  <textarea id="experience" rows="4" required></textarea>
+      <aside>
+        <img src="your-photo.jpg" alt="Your Photo">
+        <h2>Contact</h2>
+        <p>Email: your.email@example.com</p>
+        <p>Phone: (123) 456-7890</p>
+      </aside>
+    </main>
+  </div>
 
-  <label for="education">Education:</label>
-  <textarea id="education" rows="4" required></textarea>
-
-  <button onclick="downloadCV()">Download CV</button>
-
-  <script>
-    function downloadCV() {
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const bio = document.getElementById('bio').value;
-      const experience = document.getElementById('experience').value;
-      const education = document.getElementById('education').value;
-
-      const cvContent = `
-        Name: ${name}
-        
-        Email: ${email}
-
-        Bio:
-        ${bio}
-
-        Experience:
-        ${experience}
-
-        Education:
-        ${education}
-      `;
-
-      const blob = new Blob([cvContent], { type: 'text/plain' });
-      const link = document.createElement('a');
-      link.href = window.URL.createObjectURL(blob);
-      link.download = 'CV.txt';
-      link.click();
-    }
-  </script>
+  <footer>
+    <p>&copy; 2023 Your Name. All rights reserved.</p>
+  </footer>
 
 </body>
-</html>
+              </html>
+          
