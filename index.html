@@ -3,203 +3,110 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My CV</title>
+  <title>CV Generator</title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
+      margin: 20px;
+      background-color: #f2f2f2;
     }
 
-    .container {
-      width: 80%;
-      margin: auto;
-      overflow: hidden;
+    #cv-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
-    header {
-      background: #5D9CEC;
-      color: white;
-      padding-top: 30px;
-      min-height: 70px;
-      border-bottom: #e8491d 4px solid;
-    }
-
-    header a {
-      color: #ffffff;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-size: 16px;
-    }
-
-    header ul {
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      overflow: hidden;
-    }
-
-    header li {
-      float: left;
-      display: inline;
-      padding: 0 20px 0 20px;
-    }
-
-    header #branding {
-      float: left;
-    }
-
-    header #branding h1 {
-      margin: 0;
-    }
-
-    header .highlight, header .current a {
-      color: #e8491d;
-      font-weight: bold;
-    }
-
-    header a:hover {
-      color: #ffffff;
-      font-weight: bold;
-    }
-
-    header #branding img {
-      width: 150px;
-      height: 150px;
-      margin-top: 10px;
-    }
-
-    header #branding h1 span {
-      color: #5383d3;
-    }
-
-    header a:focus {
-      outline: 0;
-      color: #ffffff;
-      font-weight: bold;
-    }
-
-    header #branding h1 {
-      float: left;
-      color: #ffffff;
-      font-size: 20px;
-      padding-top: 10px;
-    }
-
-    header #branding h1 span {
-      color: #e8491d;
-    }
-
-    main {
-      padding: 40px 0;
-    }
-
-    section {
-      float: left;
-      width: 70%;
-    }
-
-    article {
-      display: block;
-      overflow: hidden;
-      margin-bottom: 20px;
-    }
-
-    article img {
-      width: 100%;
-      height: auto;
-    }
-
-    article h2 {
-      color: #e8491d;
-    }
-
-    article p {
-      line-height: 1.6em;
-      color: #666;
-    }
-
-    aside {
-      float: left;
-      width: 25%;
-      padding-top: 40px;
-    }
-
-    aside img {
-      width: 100%;
-      height: auto;
-      border: #e8491d 4px solid;
-    }
-
-    aside h2 {
-      color: #e8491d;
-    }
-
-    aside p {
-      color: #666;
-    }
-
-    footer {
-      padding: 20px 0;
-      background: #333;
-      color: #fff;
+    h1 {
       text-align: center;
-      font-size: 14px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      display: block;
+      margin: 0 auto;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="container">
-      <div id="branding">
-        <h1><span class="highlight">Your Name</span> CV</h1>
-      </div>
-      <nav>
-        <ul>
-          <li class="current"><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Experience</a></li>
-          <li><a href="#">Education</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <div id="cv-form">
+    <h1>CV Generator</h1>
 
-  <div class="container">
-    <main>
-      <section>
-        <article>
-          <h2>About Me</h2>
-          <p>Your bio or summary goes here. Provide a brief overview of your skills, experience, and career goals.</p>
-        </article>
+    <label for="name">Name:</label>
+    <input type="text" id="name" required>
 
-        <article>
-          <h2>Experience</h2>
-          <p>Your work experience details go here. List your roles, responsibilities, and achievements in each position.</p>
-        </article>
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
 
-        <article>
-          <h2>Education</h2>
-          <p>Your educational background goes here. Include details about your degrees, institutions, and graduation years.</p>
-        </article>
-      </section>
+    <label for="bio">Bio:</label>
+    <textarea id="bio" rows="4" required></textarea>
 
-      <aside>
-        <img src="your-photo.jpg" alt="Your Photo">
-        <h2>Contact</h2>
-        <p>Email: your.email@example.com</p>
-        <p>Phone: (123) 456-7890</p>
-      </aside>
-    </main>
+    <label for="experience">Experience:</label>
+    <textarea id="experience" rows="4" required></textarea>
+
+    <label for="education">Education:</label>
+    <textarea id="education" rows="4" required></textarea>
+
+    <button onclick="downloadCV()">Download CV</button>
   </div>
 
-  <footer>
-    <p>&copy; 2023 Your Name. All rights reserved.</p>
-  </footer>
+  <script>
+    function downloadCV() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const bio = document.getElementById('bio').value;
+      const experience = document.getElementById('experience').value;
+      const education = document.getElementById('education').value;
+
+      const cvContent = `
+        Name: ${name}
+        
+        Email: ${email}
+
+        Bio:
+        ${bio}
+
+        Experience:
+        ${experience}
+
+        Education:
+        ${education}
+      `;
+
+      const blob = new Blob([cvContent], { type: 'text/plain' });
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.download = 'CV.txt';
+      link.click();
+    }
+  </script>
 
 </body>
-              </html>
-          
+</html>
