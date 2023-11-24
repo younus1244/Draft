@@ -84,7 +84,7 @@
                     let whatsappLink = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
 
                     // Open WhatsApp in a new tab
-                    open(whatsappLink, '_blank');
+                    open(whatsappLink, ');
                 };
 
                 // Read the image file as a data URI
@@ -92,7 +92,7 @@
             } else {
                 // If no photo is selected, open WhatsApp without the photo
                 let whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-                open(whatsappLink, '_blank');
+                open(whatsappLink, ');
             }
         }
     </script>
