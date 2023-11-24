@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Form</title>
+    <title>WhatsApp Form with Photo</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -50,8 +50,8 @@
         <label for="message">Message:</label>
         <textarea id="message" name="message" rows="4" required></textarea>
 
-        <label for="attachment">Attachment:</label>
-        <input type="file" id="attachment" name="attachment">
+        <label for="photo">Photo:</label>
+        <input type="file" id="photo" name="photo" accept="image/*">
 
         <button type="button" onclick="sendWhatsAppMessage()">Send Message on WhatsApp</button>
     </form>
@@ -61,22 +61,42 @@
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
-            const attachment = document.getElementById('attachment').files[0];
-
+            const photoInput = document.getElementById('photo');
+            
             const phoneNumber = '+94740508400'; // Replace with your WhatsApp number
 
             // Format the message
             let whatsappMessage = `Hi, my name is ${name}. My email is ${email}. My message is: ${message}.`;
 
-            // Open WhatsApp with a pre-filled message
-            let whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+            // Check if a photo is selected
+            if (photoInput.files.length > 0) {
+                const photoFile = photoInput.files[0];
+                const reader = new FileReader();
 
-            // Open WhatsApp in a new tab
-            window.open(whatsappLink, '_blank');
+                reader.onload = function (e) {
+                    // Encode the image data in a data URI
+                    const photoDataURI = e.target.result;
 
-            // Optionally, you can upload the attachment to a server here
+                    // Add the image data to the WhatsApp message
+                    whatsappMessage += `%0A${encodeURIComponent(photoDataURI)}`;
+                    
+                    // Open WhatsApp with the pre-filled message
+                    let whatsappLink = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
+
+                    // Open WhatsApp in a new tab
+                    window.open(whatsappLink, '_blank');
+                };
+
+                // Read the image file as a data URI
+                reader.readAsDataURL(photoFile);
+            } else {
+                // If no photo is selected, open WhatsApp without the photo
+                let whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+                window.open(whatsappLink, '_blank');
+            }
         }
     </script>
 
 </body>
-</html>
+                                                                    </html>
+            
