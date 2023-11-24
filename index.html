@@ -3,122 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CV Generator</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      margin: 20px;
-      background-color: #f2f2f2;
-    }
-
-    #cv-form {
-      max-width: 600px;
-      margin: 0 auto;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-      text-align: center;
-      color: #333;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: bold;
-      color: #333;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-    }
-
-    button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 16px;
-      display: block;
-      margin: 0 auto;
-    }
-  </style>
-</head>
-<body>
-
-  <div id="cv-form">
-    <h1>CV Generator</h1>
-
-    <label for="name">Name:</label>
-    <input type="text" id="name" required>
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" required>
-
-    <label for="bio">Bio:</label>
-    <textarea id="bio" rows="4" required></textarea>
-
-    <label for="experience">Experience:</label>
-    <textarea id="experience" rows="4" required></textarea>
-
-    <label for="education">Education:</label>
-    <textarea id="education" rows="4" required></textarea>
-
-    <button onclick="downloadCV()">Download CV</button>
-  </div>
-
-  <script>
-    function downloadCV() {
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const bio = document.getElementById('bio').value;
-      const experience = document.getElementById('experience').value;
-      const education = document.getElementById('education').value;
-
-      const cvContent = `
-        Name: ${name}
-        
-        Email: ${email}
-
-        Bio:
-        ${bio}
-
-        Experience:
-        ${experience}
-
-        Education:
-        ${education}
-      `;
-
-      const blob = new Blob([cvContent], { type: 'text/plain' });
-      const link = document.createElement('a');
-      link.href = window.URL.createObjectURL(blob);
-      link.download = 'CV.txt';
-      link.click();
-    }
-  </script>
-
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CV Generator</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://unpkg.com/html2pdf.js"></script>
+  <title>Contact Us</title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -132,7 +17,7 @@
     }
 
     form {
-      max-width: 600px;
+      max-width: 400px;
       margin: 0 auto;
       background-color: #fff;
       padding: 20px;
@@ -157,7 +42,7 @@
     }
 
     button {
-      background-color: #4CAF50;
+      background-color: #25D366;
       color: white;
       padding: 10px 15px;
       border: none;
@@ -169,36 +54,33 @@
 </head>
 <body>
 
-  <h1>CV Generator</h1>
+  <h1>Contact Us on WhatsApp</h1>
 
-  <form id="cvForm">
-    <label for="name">Name:</label>
+  <form id="whatsappForm">
+    <label for="name">Your Name:</label>
     <input type="text" id="name" name="name" required>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
+    <label for="message">Your Message:</label>
+    <textarea id="message" name="message" rows="4" required></textarea>
 
-    <label for="bio">Bio:</label>
-    <textarea id="bio" name="bio" rows="4" required></textarea>
-
-    <label for="experience">Experience:</label>
-    <textarea id="experience" name="experience" rows="4" required></textarea>
-
-    <label for="education">Education:</label>
-    <textarea id="education" name="education" rows="4" required></textarea>
-
-    <button type="button" onclick="generatePDF()">Download CV</button>
+    <button type="button" onclick="openWhatsApp()">Send Message</button>
   </form>
 
   <script>
-    function generatePDF() {
-      const cvForm = document.getElementById('cvForm');
-      const pdfOptions = { margin: 10, filename: 'CV.pdf', image: { type: 'jpeg', quality: 0.98 } };
+    function openWhatsApp() {
+      const name = encodeURIComponent(document.getElementById('name').value);
+      const message = encodeURIComponent(document.getElementById('message').value);
 
-      html2pdf().from(cvForm).set(pdfOptions).outputPdf();
+      // Replace '1234567890' with the recipient's WhatsApp number including the country code
+      const phoneNumber = '+94740508400';
+
+      // Create the WhatsApp message link
+      const whatsappLink = `https://wa.me/${phoneNumber}?text=Name:%20${name}%0AMessage:%20${message}`;
+
+      // Open the link in a new tab
+      window.open(whatsappLink, '_blank');
     }
   </script>
 
 </body>
 </html>
-
