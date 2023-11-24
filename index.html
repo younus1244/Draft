@@ -1,86 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      margin: 20px;
-      background-color: #f2f2f2;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
 
-    h1 {
-      text-align: center;
-      color: #333;
-    }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
 
-    form {
-      max-width: 400px;
-      margin: 0 auto;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+        input, textarea {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
 
-    label {
-      font-weight: bold;
-      display: block;
-      margin-bottom: 8px;
-      color: #333;
-    }
-
-    input, textarea {
-      width: 100%;
-      margin-bottom: 15px;
-      padding: 10px;
-      box-sizing: border-box;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    button {
-      background-color: #25D366;
-      color: white;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-  </style>
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
 
-  <h1>Contact Us on WhatsApp</h1>
+    <h1>Contact Us</h1>
 
-  <form id="whatsappForm">
-    <label for="name">Your Name:</label>
-    <input type="text" id="name" name="name" required>
+    <form id="contactForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
 
-    <label for="file">Your Message:</label>
-    <input type="file" id="file" name="file" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
 
-    <button type="button" onclick="openWhatsApp()">Send Message</button>
-  </form>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
 
-  <script>
-    function openWhatsApp() {
-      const name = encodeURIComponent(document.getElementById('name').value);
-      const file = encodeURIComponent(document.getElementById('file').value);
+        <label for="attachment">Attachment:</label>
+        <input type="file" id="attachment" name="attachment">
 
-      // Replace '1234567890' with the recipient's WhatsApp number including the country code
-      const phoneNumber = '+94740508400';
+        <button type="button" onclick="sendWhatsAppMessage()">Send Message on WhatsApp</button>
+    </form>
 
-      // Create the WhatsApp message link
-      const whatsappLink = `https://wa.me/${phoneNumber}?text=Name:%20${name}%0AMessage:%20${message}`;
+    <script>
+        function sendWhatsAppMessage() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const attachment = document.getElementById('attachment').files[0];
 
-      // Open the link in a new tab
-      window.open(whatsappLink, '_blank');
-    }
-  </script>
+            const phoneNumber = '+94740508400'; // Replace with your WhatsApp number
+
+            // Format the message
+            let whatsappMessage = `Hi, my name is ${name}. My email is ${email}. My message is: ${message}.`;
+
+            // Open WhatsApp with a pre-filled message
+            let whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+            // Open WhatsApp in a new tab
+            window.open(whatsappLink, '_blank');
+
+            // Optionally, you can upload the attachment to a server here
+        }
+    </script>
 
 </body>
 </html>
