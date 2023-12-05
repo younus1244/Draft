@@ -62,27 +62,24 @@
         <h2>Product 1</h2>
         <p>Description of Product 1.</p>
         <p>Price: $10</p>
-        <button onclick="www.google.com">Download</button>
+        <a href="www.google.com" download>
+            <button>Download</button>
+        </a>
     </div>
 
     <div class="product" id="product2">
         <h2>Product 2</h2>
         <p>Description of Product 2.</p>
         <p>Price: $15</p>
-        <button onclick="downloadProduct(2)">Download</button>
+        <a href="path/to/product2_document.pdf" download>
+            <button>Download</button>
+        </a>
     </div>
 
     <!-- Add more product divs as needed -->
 
 </div>
 
-<script>
-    function downloadProduct(productId) {
-        // You can implement the download logic here
-        // For simplicity, let's just show an alert
-        alert("Downloading Product " + productId);
-    }
-</script>
-
 </body>
-</html>
+    </html>
+    
