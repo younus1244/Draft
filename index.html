@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Download Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        .product-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 2em;
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 1em;
+            margin: 1em;
+            width: 200px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 0.5em 1em;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Digital Download Shop</h1>
+</header>
+
+<div class="product-container">
+    <div class="product" id="product1">
+        <h2>Product 1</h2>
+        <p>Description of Product 1.</p>
+        <p>Price: $10</p>
+        <button onclick="www.google.com">Download</button>
+    </div>
+
+    <div class="product" id="product2">
+        <h2>Product 2</h2>
+        <p>Description of Product 2.</p>
+        <p>Price: $15</p>
+        <button onclick="downloadProduct(2)">Download</button>
+    </div>
+
+    <!-- Add more product divs as needed -->
+
+</div>
+
+<script>
+    function downloadProduct(productId) {
+        // You can implement the download logic here
+        // For simplicity, let's just show an alert
+        alert("Downloading Product " + productId);
+    }
+</script>
+
+</body>
+</html>
